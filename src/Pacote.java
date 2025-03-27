@@ -1,4 +1,4 @@
-public class Pacote {
+/*public class Pacote {
     private Destino destino;
     private double precoPorDia; 
     private int duracao;         
@@ -38,4 +38,4 @@ public class Pacote {
     }
 
     
-}
+}*/

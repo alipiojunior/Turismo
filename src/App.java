@@ -1,8 +1,12 @@
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
-public class App {
+public class App { // Controller
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        ServicoDeReserva servicoDeReserva = new ServicoDeReserva();
+        ServicoDePagamento servicoDePagamento = new ServicoDePagamento();
 
         System.out.print("Digite o país do destino: ");
         String paisDestino = scanner.nextLine();
@@ -32,27 +36,26 @@ public class App {
 
         System.out.print("\nDigite o seu nome: ");
         String nomeUsuario = scanner.nextLine();
-        
+
         System.out.print("Digite o seu e-mail: ");
         String emailUsuario = scanner.nextLine();
-        
+
         System.out.print("Digite o seu telefone: ");
         String telefoneUsuario = scanner.nextLine();
 
         Usuario usuario = new Usuario(nomeUsuario, emailUsuario, telefoneUsuario);
 
-        Reserva reserva = new Reserva(usuario, pacoteEscolhido);
-        System.out.println("Reserva criada com status: " + reserva.getStatus());
-        
-        usuario.fazerReserva(reserva);  
-        System.out.println("Status da reserva após confirmação: " + reserva.getStatus());
-    
+        // Delega a criação da reserva para o ServicoDeReserva (Indirection)
+        Reserva reserva = servicoDeReserva.criarReserva(usuario, pacoteEscolhido);
+
         System.out.print("Digite o método de pagamento (ex: Cartão de Crédito): ");
         String metodoPagamento = scanner.nextLine();
 
         Pagamento pagamento = new Pagamento(reserva, metodoPagamento, pacoteEscolhido.getPreco());
-        pagamento.processarPagamento();
-        
+
+        // Delega o processamento do pagamento para o ServicoDePagamento (Indirection)
+        servicoDePagamento.processarPagamento(pagamento);
+
         scanner.close();
     }
 }

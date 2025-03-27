@@ -1,4 +1,3 @@
-// Pure Fabrication / Serviço de Reserva (Indirection)
 class ServicoDeReserva {
     public Reserva criarReserva(Usuario usuario, Pacotes pacote) {
         Reserva reserva = new Reserva(usuario, pacote);

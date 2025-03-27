@@ -2,7 +2,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
 
-public class App { // Controller
+public class App {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         ServicoDeReserva servicoDeReserva = new ServicoDeReserva();
@@ -44,8 +44,7 @@ public class App { // Controller
         String telefoneUsuario = scanner.nextLine();
 
         Usuario usuario = new Usuario(nomeUsuario, emailUsuario, telefoneUsuario);
-
-        // Delega a criação da reserva para o ServicoDeReserva (Indirection)
+        
         Reserva reserva = servicoDeReserva.criarReserva(usuario, pacoteEscolhido);
 
         System.out.print("Digite o método de pagamento (ex: Cartão de Crédito): ");
@@ -53,7 +52,6 @@ public class App { // Controller
 
         Pagamento pagamento = new Pagamento(reserva, metodoPagamento, pacoteEscolhido.getPreco());
 
-        // Delega o processamento do pagamento para o ServicoDePagamento (Indirection)
         servicoDePagamento.processarPagamento(pagamento);
 
         scanner.close();

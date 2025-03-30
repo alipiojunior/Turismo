@@ -5,7 +5,7 @@ class Reserva {
     
     public Reserva(Usuario usuario, Pacotes pacote) {
         this.usuario = usuario;
-        this.status = "Pendente";
+        this.status = "Pendente";   
         this.pacote = pacote; 
     }
     

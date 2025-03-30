@@ -1,9 +1,4 @@
-
-/*
- @author GPT
- */
-
- enum Pacotes {
+enum Pacotes {
     Economico(899.90, "Pacote Econômico - 3 dias e 2 noites, hospedagem simples, café da manhã incluso"),
     Intermediario(1499.90, "Pacote Intermediário - 5 dias e 4 noites, hotel 3 estrelas, café da manhã e passeios"),
     Luxo(2999.90, "Pacote Luxo - 7 dias e 6 noites, resort 5 estrelas, all-inclusive, passeios guiados"),

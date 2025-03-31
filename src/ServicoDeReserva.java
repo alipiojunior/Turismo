@@ -3,7 +3,7 @@ class ServicoDeReserva {
         Reserva reserva = new Reserva(usuario, pacote);
         reserva.setStatus("Pendente");
         System.out.println("Reserva criada com status: " + reserva.getStatus());
-        usuario.adicionarReserva(reserva); // Usuário agora gerencia suas reservas
+        usuario.adicionarReserva(reserva); 
         System.out.println("Status da reserva após confirmação: " + reserva.getStatus());
         return reserva;
     }

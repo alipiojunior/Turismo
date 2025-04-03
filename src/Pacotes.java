@@ -7,10 +7,12 @@ enum Pacotes {
 
     private final double preco;
     private final String descricao;
+    private final String nomeFormatado;
 
     Pacotes(double preco, String descricao) {
         this.preco = preco;
         this.descricao = descricao;
+        this.nomeFormatado = formatarNome();
     }
 
     public double getPreco() {
@@ -19,5 +21,14 @@ enum Pacotes {
 
     public String getDescricao() {
         return descricao;
+    }
+
+    public String getNomeFormatado() {
+        return nomeFormatado;
+    }
+
+    private String formatarNome() {
+        String nome = this.name();
+        return nome.substring(0, 1).toUpperCase() + nome.substring(1).toLowerCase();
     }
 }

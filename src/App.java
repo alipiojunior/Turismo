@@ -16,22 +16,29 @@ public class App {
 
         Destino destino = new Destino(nomeDestino, paisDestino);
 
-        System.out.println("\nEscolha um pacote de turismo:");
-        for (Pacotes pacote : Pacotes.values()) {
-            System.out.println(pacote.ordinal() + 1 + " - " + pacote.name() + " (R$" + pacote.getPreco() + ") - " + pacote.getDescricao());
+        System.out.println("\nEscolha um pacote de turismo (digite o número correspondente):");
+        Pacotes[] pacotes = Pacotes.values();
+        for (int i = 0; i < pacotes.length; i++) {
+            System.out.println((i + 1) + " - " + pacotes[i].getNomeFormatado() + " (R$" + pacotes[i].getPreco() + ") - " + pacotes[i].getDescricao());
         }
 
-        System.out.print("\nDigite o nome do pacote desejado (exemplo: ECONOMICO): ");
-        String pacoteEscolhidoNome = scanner.nextLine().toUpperCase();
-
+        int escolhaPacote;
         Pacotes pacoteEscolhido = null;
-        try {
-            pacoteEscolhido = Pacotes.valueOf(pacoteEscolhidoNome);
-            System.out.println("\nVocê escolheu o pacote: " + pacoteEscolhido.name() + " - " + pacoteEscolhido.getDescricao());
-        } catch (IllegalArgumentException e) {
-            System.out.println("Pacote inválido. Encerrando o programa.");
-            scanner.close();
-            return;
+        while (pacoteEscolhido == null) {
+            System.out.print("\nDigite o número do pacote desejado: ");
+            if (scanner.hasNextInt()) {
+                escolhaPacote = scanner.nextInt();
+                if (escolhaPacote >= 1 && escolhaPacote <= pacotes.length) {
+                    pacoteEscolhido = pacotes[escolhaPacote - 1];
+                    scanner.nextLine(); // Consumir a quebra de linha
+                    System.out.println("\nVocê escolheu o pacote: " + pacoteEscolhido.getNomeFormatado() + " - " + pacoteEscolhido.getDescricao());
+                } else {
+                    System.out.println("Opção inválida. Digite um número entre 1 e " + pacotes.length + ".");
+                }
+            } else {
+                System.out.println("Entrada inválida. Digite um número.");
+                scanner.next(); // Consumir a entrada inválida
+            }
         }
 
         System.out.print("\nDigite o seu nome: ");
@@ -44,7 +51,7 @@ public class App {
         String telefoneUsuario = scanner.nextLine();
 
         Usuario usuario = new Usuario(nomeUsuario, emailUsuario, telefoneUsuario);
-        
+
         Reserva reserva = servicoDeReserva.criarReserva(usuario, pacoteEscolhido);
 
         System.out.print("Digite o método de pagamento (ex: Cartão de Crédito): ");

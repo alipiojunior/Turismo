@@ -30,14 +30,14 @@ public class App {
                 escolhaPacote = scanner.nextInt();
                 if (escolhaPacote >= 1 && escolhaPacote <= pacotes.length) {
                     pacoteEscolhido = pacotes[escolhaPacote - 1];
-                    scanner.nextLine(); // Consumir a quebra de linha
+                    scanner.nextLine(); 
                     System.out.println("\nVocê escolheu o pacote: " + pacoteEscolhido.getNomeFormatado() + " - " + pacoteEscolhido.getDescricao());
                 } else {
                     System.out.println("Opção inválida. Digite um número entre 1 e " + pacotes.length + ".");
                 }
             } else {
                 System.out.println("Entrada inválida. Digite um número.");
-                scanner.next(); // Consumir a entrada inválida
+                scanner.next(); 
             }
         }
 

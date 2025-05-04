@@ -1,12 +1,12 @@
 import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.List;
 
 public class App {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        ServicoDeReserva servicoDeReserva = new ServicoDeReserva();
-        ServicoDePagamento servicoDePagamento = new ServicoDePagamento();
+
+        // Usando instâncias únicas (Singleton)
+        ServicoDeReserva servicoDeReserva = ServicoDeReserva.getInstancia();
+        ServicoDePagamento servicoDePagamento = ServicoDePagamento.getInstancia();
 
         System.out.print("Digite o país do destino: ");
         String paisDestino = scanner.nextLine();
